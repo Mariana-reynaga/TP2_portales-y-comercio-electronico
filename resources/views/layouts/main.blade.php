@@ -7,7 +7,7 @@
 
     @vite('resources/css/app.css')
 
-    <title>Landing</title>
+    <title>@yield('title')</title>
 </head>
 <body>
     <x-navbar />

@@ -1,4 +1,4 @@
-<div class="min-h-64 w-full p-6 flex justify-evenly shadow-lg rounded-lg">
+<div class="md:w-2/5 lg:w-1/4 xl:w-[30%] p-6 shadow-lg rounded-lg">
     <div class="mt-3 flex flex-col justify-evenly font-outfit">
         <h3 class="text-xl">{{ $title }}</h3>
 

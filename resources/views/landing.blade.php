@@ -1,4 +1,6 @@
-@extends('layouts.landing')
+@extends('layouts.main')
+
+@section('title', 'Home')
 
 @section('content')
     <div class="flex justify-center">
@@ -10,10 +12,11 @@
     <div class="flex justify-center">
         <div class="w-4/5 flex flex-wrap justify-evenly">
             @for ($x = 0; $x <= 2; $x++)
-                <x-product-card>
+                <x-landing-product-card>
                     <x-slot name="title">producto</x-slot>
                     <x-slot name="price">2321</x-slot>
-                </x-product-card>
+                    <x-slot name="id">21</x-slot>
+                </x-landing-product-card>
             @endfor
         </div>
     </div>
@@ -58,12 +61,13 @@
 
     <div class="flex flex-col items-center">
         <div class="w-4/5 flex flex-wrap justify-evenly">
-            @for ($x = 0; $x <= 2; $x++)
-                <x-blog-card>
-                    <x-slot name="title">Blog title</x-slot>
-                    <x-slot name="snippet">a snipped of a blog. its incredible what it says!</x-slot>
-                </x-blog-card>
-            @endfor
+            @foreach ($random_blogs as $blog )
+                <x-landing-blog-card>
+                    <x-slot name="title">{{ $blog->blog_title }}</x-slot>
+                    <x-slot name="snippet">{{ $blog->blog_article }}</x-slot>
+                    <x-slot name="id">{{ $blog->blog_id }}</x-slot>
+                </x-landing-blog-card>
+            @endforeach
         </div>
     </div>
 @endsection
