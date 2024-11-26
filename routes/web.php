@@ -50,6 +50,10 @@ Route::put('/admin/lamparas/{id}', [App\Http\Controllers\ProductController::clas
     ->name('products.edit.process')
     ->whereNumber('id');
 
+Route::delete('/admin/lamparas/{id}', [App\Http\Controllers\ProductController::class, "deleteProcess"])
+    ->name('products.delete.process')
+    ->whereNumber('id');
+
 Route::get('/admin/blog', [App\Http\Controllers\AdminController::class, 'adminBlog'])
     ->name('admin.blog');
 

@@ -7,8 +7,12 @@
         <p class="text-xl lg:text-base">${{ $price }}</p>
 
         <div class="flex justify-evenly mt-2">
-                    {{-- cambiar por ruta bien --}}
-            <a href="{{ route('admin.products', ['id'=>$id]) }}" class="px-8 py-4 lg:px-6 lg:py-2 text-xl lg:text-base  text-white bg-red-500 rounded-md">Eliminar</a>
+            <form action="{{ route('products.delete.process', ['id'=>$id]) }}" method="POST">
+                @csrf
+                @method('DELETE')
+
+                <button type="submit" class="px-8 py-4 lg:px-6 lg:py-2 text-xl lg:text-base  text-white bg-red-500 rounded-md">Eliminar</button>
+            </form>
 
             <a href="{{ route('products.edit', ['id'=>$id]) }}" class="px-8 py-4 lg:px-6 lg:py-2 text-xl lg:text-base border-2 border-secondary rounded-md">Editar</a>
 

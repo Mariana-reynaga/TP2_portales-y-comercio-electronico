@@ -154,4 +154,12 @@ class ProductController extends Controller
 
         return redirect()->route('admin.products');
     }
+
+    public function deleteProcess(Int $id, Request $req){
+        $product = Lamparas::findOrFail($id);
+
+        $product->delete();
+
+        return redirect()->route('admin.products');
+    }
 }
