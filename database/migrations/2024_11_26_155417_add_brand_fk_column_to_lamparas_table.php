@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('colors', function (Blueprint $table) {
-            $table->tinyIncrements('color_id');
-            $table->string('color_name');
-            $table->timestamps();
+        Schema::table('lamparas', function (Blueprint $table) {
+            $table->unsignedTinyInteger('brand_fk');
+            $table->foreign('brand_fk')->references('brand_id')->on('marcas');
         });
     }
 
@@ -23,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('colors');
+        Schema::table('lamparas', function (Blueprint $table) {
+            $table->dropColumn('brand_fk');
+        });
     }
 };

@@ -20,9 +20,9 @@ class LamparasSeeder extends Seeder
                 'lamp_height'       => '12',
                 'lamp_stock'        => '5',
                 // 'image_fk'          => 1,
-                // 'brand_fk'          => 1,
-                // 'material_fk'       => 3,
-                // 'color_fk'          => 2,
+                'brand_fk'          => 1,
+                'material_fk'       => 2,
+                'color_fk'          => 4,
                 'created_at'        => now()
             ],
             [
@@ -31,9 +31,9 @@ class LamparasSeeder extends Seeder
                 'lamp_height'       => '80',
                 'lamp_stock'        => '60',
                 // 'image_fk'          => 1,
-                // 'brand_fk'          => 1,
-                // 'material_fk'       => 3,
-                // 'color_fk'          => 2,
+                'brand_fk'          => 2,
+                'material_fk'       => 3,
+                'color_fk'          => 1,
                 'created_at'        => now()
             ],
             [
@@ -42,9 +42,9 @@ class LamparasSeeder extends Seeder
                 'lamp_height'       => '26',
                 'lamp_stock'        => '100',
                 // 'image_fk'          => 1,
-                // 'brand_fk'          => 1,
-                // 'material_fk'       => 3,
-                // 'color_fk'          => 2,
+                'brand_fk'          => 1,
+                'material_fk'       => 4,
+                'color_fk'          => 3,
                 'created_at'        => now()
             ],
             [
@@ -53,9 +53,9 @@ class LamparasSeeder extends Seeder
                 'lamp_height'       => '100',
                 'lamp_stock'        => '160',
                 // 'image_fk'          => 1,
-                // 'brand_fk'          => 1,
-                // 'material_fk'       => 3,
-                // 'color_fk'          => 2,
+                'brand_fk'          => 3,
+                'material_fk'       => 1,
+                'color_fk'          => 1,
                 'created_at'        => now()
             ],
             [
@@ -64,9 +64,9 @@ class LamparasSeeder extends Seeder
                 'lamp_height'       => '170',
                 'lamp_stock'        => '30',
                 // 'image_fk'          => 1,
-                // 'brand_fk'          => 1,
-                // 'material_fk'       => 3,
-                // 'color_fk'          => 2,
+                'brand_fk'          => 2,
+                'material_fk'       => 2,
+                'color_fk'          => 3,
                 'created_at'        => now()
             ],
         ]);

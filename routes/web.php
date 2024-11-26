@@ -21,3 +21,10 @@ Route::get('/blog', [App\Http\Controllers\BlogController::class, "blog"])
 Route::get('/blog/{id}', [App\Http\Controllers\BlogController::class, "article"])
     ->name('blog.article')
     ->whereNumber('id');
+
+    // Autenticación
+Route::get('/iniciar', [App\Http\Controllers\AuthController::class, "loginView"])
+    ->name('login.form');
+
+Route::get('/crear', [App\Http\Controllers\AuthController::class, "registerView"])
+    ->name('register.form');

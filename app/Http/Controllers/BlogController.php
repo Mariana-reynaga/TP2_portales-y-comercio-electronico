@@ -17,7 +17,7 @@ class BlogController extends Controller
 
     public function article(int $id){
         $article = Blog::find($id);
-
+        
         return view('blog.article', [
             'article' => $article
         ]);

@@ -6,7 +6,7 @@
             <ul class="w-1/3 flex justify-between items-center text-xl font-outfit text-black">
                 <li><a href="/lamparas">Productos</a></li>
                 <li><a href="/blog">Blog</a></li>
-                <li>Iniciar sesión</li>
+                <li><a href="/iniciar">Iniciar sesión</a></li>
             </ul>
         </div>
     </div>

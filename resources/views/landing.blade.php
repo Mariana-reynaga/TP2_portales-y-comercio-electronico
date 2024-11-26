@@ -11,13 +11,13 @@
 
     <div class="flex justify-center">
         <div class="w-4/5 flex flex-wrap justify-evenly">
-            @for ($x = 0; $x <= 2; $x++)
+            @foreach ( $random_lamps as $lamps )
                 <x-landing-product-card>
-                    <x-slot name="title">producto</x-slot>
-                    <x-slot name="price">2321</x-slot>
-                    <x-slot name="id">21</x-slot>
+                    <x-slot name="title">{{ $lamps->lamp_name }}</x-slot>
+                    <x-slot name="price">{{ $lamps->lamp_price }}</x-slot>
+                    <x-slot name="id">{{ $lamps->lamp_id }}</x-slot>
                 </x-landing-product-card>
-            @endfor
+            @endforeach
         </div>
     </div>
 
@@ -47,7 +47,7 @@
             </div>
 
             <div class="mt-10 mb-4 lg:mt-6">
-                <a href="" class="px-8 py-4 lg:px-6 lg:py-2 text-xl lg:text-base bg-primary rounded-md">Crear cuenta</a>
+                <a href="/crear" class="px-8 py-4 lg:px-6 lg:py-2 text-xl lg:text-base bg-primary rounded-md">Crear cuenta</a>
             </div>
         </div>
     </div>
