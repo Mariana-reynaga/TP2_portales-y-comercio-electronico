@@ -10,7 +10,14 @@
     <title>@yield('title')</title>
 </head>
 <body>
-    <x-navbar />
+    <x-navbar>
+        <x-slot name="title">Lamparas</x-slot>
+        <x-slot name="route_home">/</x-slot>
+        <x-slot name="route_lamps">/lamparas</x-slot>
+        <x-slot name="route_blog">/blog</x-slot>
+    </x-navbar>
+
+
     @yield('content')
 
     <div class="min-h-32 mt-10 py-6 flex  justify-center bg-black text-white">

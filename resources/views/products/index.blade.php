@@ -10,9 +10,11 @@
             <div class="flex flex-col items-center md:grid md:grid-cols-2 md:gap-x-5 md:gap-y-5 lg:grid-cols-3">
                 @foreach ( $lamps as $lamp )
                     <x-product-card>
+                        <x-slot name="image">img/lamat.png</x-slot>
                         <x-slot name="title">{{ $lamp->lamp_name }}</x-slot>
                         <x-slot name="price">{{ $lamp->lamp_price }}</x-slot>
                         <x-slot name="id">{{ $lamp->lamp_id }}</x-slot>
+                        <x-slot name="route">products.detail</x-slot>
                     </x-product-card>
                 @endforeach
             </div>
