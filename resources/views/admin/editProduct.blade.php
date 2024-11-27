@@ -29,7 +29,7 @@
                             </x-edit-form-component>
 
                             @error('lamp_name')
-                                <div class="mt-2 text-red-500"> {{ $message }} </div>
+                                <div class="mt-2 text-red-500">{{ $message }}</div>
                             @enderror
                         </div>
 
