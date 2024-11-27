@@ -13,6 +13,7 @@
         <div class="w-4/5 flex flex-wrap justify-evenly">
             @foreach ( $random_lamps as $lamps )
                 <x-landing-product-card>
+                    <x-slot name="image">{{ $lamps->lamp_image }}</x-slot>
                     <x-slot name="title">{{ $lamps->lamp_name }}</x-slot>
                     <x-slot name="price">{{ $lamps->lamp_price }}</x-slot>
                     <x-slot name="id">{{ $lamps->lamp_id }}</x-slot>

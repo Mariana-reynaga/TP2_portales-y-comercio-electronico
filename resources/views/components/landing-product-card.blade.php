@@ -1,5 +1,5 @@
 <div class="w-4/5 md:w-2/5 lg:w-1/4 xl:w-[30%] h-max mt-3 lg:mt-0 p-6 shadow-lg rounded-lg">
-    <img src="img/lamat.png" alt="" class="w-full">
+    <img src="{{ Storage::url($image) }}" alt="" class="w-full">
 
     <div class="lg:h-24 mt-3 flex flex-col justify-evenly font-outfit">
         <h3 class="text-2xl lg:text-xl">{{ $title }}</h3>

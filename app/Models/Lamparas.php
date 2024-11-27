@@ -14,7 +14,17 @@ class Lamparas extends Model
 
     protected $primaryKey = 'lamp_id';
 
-    protected $fillable = ['lamp_name', 'lamp_price', 'lamp_height', 'lamp_stock', 'brand_fk', 'color_fk', 'material_fk'];
+    protected $fillable = [
+            'lamp_name',
+            'lamp_price',
+            'lamp_height',
+            'lamp_stock',
+            'lamp_image',
+            'lamp_image_alt',
+            'brand_fk',
+            'color_fk',
+            'material_fk'
+        ];
 
     public function brand(){
         return $this->belongsTo(Marca::class, 'brand_fk', 'brand_id');

@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="mt-5 lg:w-1/2 lg:mt-0">
-                    <img src="/img/lamat.png" alt="">
+                    <img src="{{ Storage::url($product->lamp_image) }}" alt="" class="shadow-md">
                 </div>
             </div>
         </div>

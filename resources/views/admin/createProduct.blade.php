@@ -13,7 +13,7 @@
 
     <div class="flex justify-center">
         <div class="w-4/5">
-            <form action="{{ route('products.create.process') }}" method="POST">
+            <form action="{{ route('products.create.process') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <div class="flex justify-evenly">
@@ -50,6 +50,30 @@
                             </x-form-component>
 
                             @error('lamp_stock')
+                                <div class="mt-2 text-red-500"> {{ $message }} </div>
+                            @enderror
+                        </div>
+
+                        <div class="">
+                            <x-form-component>
+                                <x-slot name="dbCol">lamp_image</x-slot>
+                                <x-slot name="label">Imagen</x-slot>
+                                <x-slot name="type">file</x-slot>
+                            </x-form-component>
+
+                            @error('lamp_image')
+                                <div class="mt-2 text-red-500"> {{ $message }} </div>
+                            @enderror
+                        </div>
+
+                        <div class="">
+                            <x-form-component>
+                                <x-slot name="dbCol">lamp_image_alt</x-slot>
+                                <x-slot name="label">Descripción de la imagen</x-slot>
+                                <x-slot name="type">text</x-slot>
+                            </x-form-component>
+
+                            @error('lamp_image_alt')
                                 <div class="mt-2 text-red-500"> {{ $message }} </div>
                             @enderror
                         </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 // NO ELIMINAR
 use App\Models\Blog;
@@ -67,38 +68,44 @@ class ProductController extends Controller
     public function createProcess(Request $req){
         $req->validate(
             [
-                'lamp_name'     => 'required | min:10   | max:30',
-                'lamp_price'    => 'required | numeric  | min:2500',
-                'lamp_height'   => 'required | numeric  |max: 1000',
-                'lamp_stock'    => 'required | numeric  | min:0',
-                'brand_fk'      => 'required',
-                'color_fk'      => 'required',
-                'material_fk'   => 'required'
+                'lamp_name'     => 'required | min:10   | max:30'               ,
+                'lamp_price'    => 'required | numeric  | min:2500'             ,
+                'lamp_height'   => 'required | numeric  | min:10    |max: 1000' ,
+                'lamp_stock'    => 'required | numeric  | min:0'                ,
+                'brand_fk'      => 'required'                                   ,
+                'color_fk'      => 'required'                                   ,
+                'material_fk'   => 'required'                                   ,
+                'lamp_image'    => 'required'
             ],
             [
-                'lamp_name.required' => 'El nombre es requerido.',
-                'lamp_name.min' => 'El nombre debe tener un minimo de 10 caracteres.',
-                'lamp_name.max' => 'El nombre debe tener un maximo de 30 caracteres.',
+                'lamp_name.required'    => 'El nombre es requerido.',
+                'lamp_name.min'         => 'El nombre debe tener un minimo de 10 caracteres.',
+                'lamp_name.max'         => 'El nombre debe tener un maximo de 30 caracteres.',
                 // //
-                'lamp_price.required' => 'El precio es requerido.',
-                'lamp_price.numeric' => 'El precio debe ser numerico.',
-                'lamp_price.min' => 'El precio debe ser como minimo $2500.',
+                'lamp_price.required'   => 'El precio es requerido.',
+                'lamp_price.numeric'    => 'El precio debe ser numerico.',
+                'lamp_price.min'        => 'El precio debe ser como minimo $2500.',
                 // //
-                'lamp_height.required' => 'La altura es requerida.',
-                'lamp_height.numeric' => 'La altura debe ser numerico.',
-                'lamp_height.max' => 'La altura debe ser como maximo 1000 cm.',
+                'lamp_height.required'  => 'La altura es requerida.',
+                'lamp_height.numeric'   => 'La altura debe ser numerico.',
+                'lamp_height.min'       => 'La altura debe ser como minimo 10 cm.',
+                'lamp_height.max'       => 'La altura debe ser como maximo 1000 cm.',
                 // //
-                'lamp_stock.required' => 'El stock es requerido.',
-                'lamp_stock.numeric' => 'El stock debe ser numerico.',
-                'lamp_stock.min' => 'El stock debe ser como minimo 0.',
+                'lamp_stock.required'   => 'El stock es requerido.',
+                'lamp_stock.numeric'    => 'El stock debe ser numerico.',
+                'lamp_stock.min'        => 'El stock debe ser como minimo 0.',
                 ////
-                'brand_fk.required'=>'La marca es requerida.',
-                'color_fk.required'=>'El color es requerido.',
-                'material_fk.required'=>'El material es requerido.',
+                'brand_fk.required'     => 'La marca es requerida.',
+                'color_fk.required'     => 'El color es requerido.',
+                'material_fk.required'  => 'El material es requerido.',
+                ////
+                'lamp_image.required'   => 'La imagen es requerida.'
             ]
         );
 
         $input = $req->all([]);
+
+        $input['lamp_image'] = $req->file('lamp_image')->store('images', 'public');
 
         Lamparas::create($input);
 
@@ -156,7 +163,15 @@ class ProductController extends Controller
 
         $product = Lamparas::findOrFail($id);
 
-        $input = $req->except('_token', '_method');
+        $input = $req->all([]);
+
+        $oldImage = $product->lamp_image;
+
+        if ($req->hasFile('lamp_image')) {
+            $input['lamp_image'] = $req->file('lamp_image')->store('images', 'public');
+
+            Storage::disk('public')->delete($oldImage);
+        }
 
         $product->update($input);
 
@@ -165,6 +180,10 @@ class ProductController extends Controller
 
     public function deleteProcess(Int $id, Request $req){
         $product = Lamparas::findOrFail($id);
+
+        $product_image = $product->lamp_image;
+
+        Storage::disk('public')->delete($product_image);
 
         $product->delete();
 

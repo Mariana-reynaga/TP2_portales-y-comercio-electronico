@@ -11,9 +11,9 @@
         </div>
     </div>
 
-    <div class="flex justify-center">
+    <div class="flex justify-center mb-10">
         <div class="w-4/5">
-            <form action="{{ route('products.edit.process', ['id'=>$product->lamp_id]) }}" method="POST">
+            <form action="{{ route('products.edit.process', ['id'=>$product->lamp_id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 @method('PUT')
@@ -55,6 +55,37 @@
                             </x-edit-form-component>
 
                             @error('lamp_stock')
+                                <div class="mt-2 text-red-500"> {{ $message }} </div>
+                            @enderror
+                        </div>
+
+                        <div class="">
+                            <div class="w-full flex justify-center">
+                                <img class="w-1/3 mt-3" src="{{ Storage::url($product->lamp_image) }}" alt="">
+                            </div>
+
+                            <input type="hidden" name="lamp_old_image" value="{{ $product->lamp_image }}">
+
+                            <x-edit-form-component>
+                                <x-slot name="dbCol">lamp_image</x-slot>
+                                <x-slot name="label">Imagen</x-slot>
+                                <x-slot name="type">file</x-slot>
+                            </x-edit-form-component>
+
+                            @error('lamp_image')
+                                <div class="mt-2 text-red-500"> {{ $message }} </div>
+                            @enderror
+                        </div>
+
+                        <div class="">
+                            <x-edit-form-component>
+                                <x-slot name="dbCol">lamp_image_alt</x-slot>
+                                <x-slot name="label">Descripción de la imagen</x-slot>
+                                <x-slot name="type">text</x-slot>
+                                {{ $product->lamp_image_alt }}
+                            </x-edit-form-component>
+
+                            @error('lamp_image_alt')
                                 <div class="mt-2 text-red-500"> {{ $message }} </div>
                             @enderror
                         </div>
@@ -119,7 +150,7 @@
 
                 </div>
 
-                <div class="mt-5">
+                <div class="mt-5 flex justify-center">
                     <button class="px-6 py-2 bg-primary rounded-md" type="submit">Guardar</button>
                 </div>
 

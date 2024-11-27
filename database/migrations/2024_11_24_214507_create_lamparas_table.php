@@ -17,6 +17,8 @@ return new class extends Migration
             $table->unsignedInteger('lamp_price');
             $table->unsignedSmallInteger('lamp_height');
             $table->unsignedSmallInteger('lamp_stock');
+            $table->string('lamp_image')->nullable();
+            $table->string('lamp_image_alt')->nullable();
             $table->timestamps();
         });
     }

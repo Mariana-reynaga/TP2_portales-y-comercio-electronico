@@ -1,5 +1,5 @@
 <div class="h-max p-6 shadow-lg rounded-lg">
-    <img src="{{ $image }}" alt="" class="w-full">
+    <img src="{{ Storage::url($image) }}" alt="" class="w-full">
 
     <div class="lg:h-24 mt-3 flex flex-col justify-evenly font-outfit">
         <h3 class="text-2xl lg:text-xl">{{ $title }}</h3>
