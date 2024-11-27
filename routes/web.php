@@ -33,33 +33,57 @@ Route::get('/crear', [App\Http\Controllers\AuthController::class, "registerView"
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'admin'])
     ->name('admin.home');
 
-Route::get('/admin/lamparas', [App\Http\Controllers\ProductController::class, 'adminProducts'])
-    ->name('admin.products');
+        // Productos
+    Route::get('/admin/lamparas', [App\Http\Controllers\ProductController::class, 'adminProducts'])
+        ->name('admin.products');
 
-Route::get('/admin/lamparas/detalle/{id}', [App\Http\Controllers\ProductController::class, "adminDetail"])
-    ->name('admin.products.detail')
-    ->whereNumber('id');
+    Route::get('/admin/lamparas/detalle/{id}', [App\Http\Controllers\ProductController::class, "adminDetail"])
+        ->name('admin.products.detail')
+        ->whereNumber('id');
 
-Route::get('/admin/lamparas/crear', [App\Http\Controllers\ProductController::class, "productCreate"])
-    ->name('products.create');
+    Route::get('/admin/lamparas/crear', [App\Http\Controllers\ProductController::class, "productCreate"])
+        ->name('products.create');
 
-Route::post('/admin/lamparas/crear', [App\Http\Controllers\ProductController::class, "createProcess"])
-    ->name('products.create.process');
+    Route::post('/admin/lamparas/crear', [App\Http\Controllers\ProductController::class, "createProcess"])
+        ->name('products.create.process');
 
-Route::get('/admin/lamparas/{id}', [App\Http\Controllers\ProductController::class, "productEdit"])
-    ->name('products.edit')
-    ->whereNumber('id');
+    Route::get('/admin/lamparas/{id}', [App\Http\Controllers\ProductController::class, "productEdit"])
+        ->name('products.edit')
+        ->whereNumber('id');
 
-Route::put('/admin/lamparas/{id}', [App\Http\Controllers\ProductController::class, "editProcess"])
-    ->name('products.edit.process')
-    ->whereNumber('id');
+    Route::put('/admin/lamparas/{id}', [App\Http\Controllers\ProductController::class, "editProcess"])
+        ->name('products.edit.process')
+        ->whereNumber('id');
 
-Route::delete('/admin/lamparas/{id}', [App\Http\Controllers\ProductController::class, "deleteProcess"])
-    ->name('products.delete.process')
-    ->whereNumber('id');
+    Route::delete('/admin/lamparas/{id}', [App\Http\Controllers\ProductController::class, "deleteProcess"])
+        ->name('products.delete.process')
+        ->whereNumber('id');
 
-Route::get('/admin/blog', [App\Http\Controllers\AdminController::class, 'adminBlog'])
-    ->name('admin.blog');
+        // Blog
+    Route::get('/admin/blog', [App\Http\Controllers\BlogController::class, 'adminBlog'])
+        ->name('admin.blogs');
 
-Route::get('/admin/usuarios', [App\Http\Controllers\AdminController::class, 'adminUsers'])
-    ->name('admin.users');
+    Route::get('/admin/blog/detalle/{id}', [App\Http\Controllers\BlogController::class, 'adminBlogDetails'])
+        ->name('admin.blogs.detail')
+        ->whereNumber('id');
+
+    Route::get('/admin/blog/crear', [App\Http\Controllers\BlogController::class, 'createBlog'])
+        ->name('blog.create');
+
+    Route::post('/admin/blog/crear', [App\Http\Controllers\BlogController::class, 'createBlogProcess'])
+        ->name('blog.create.process');
+
+    Route::get('/admin/blog/{id}', [App\Http\Controllers\BlogController::class, 'editBlog'])
+        ->name('blog.edit')
+        ->whereNumber('id');
+
+    Route::put('/admin/blog/{id}', [App\Http\Controllers\BlogController::class, 'editBlogProcess'])
+        ->name('blog.edit.process')
+        ->whereNumber('id');
+
+    Route::delete('/admin/blog/{id}', [App\Http\Controllers\BlogController::class, 'deleteBlog'])
+        ->name('blog.delete.process');
+
+        // Users
+    Route::get('/admin/usuarios', [App\Http\Controllers\BlogController::class, 'adminUsers'])
+        ->name('admin.users');

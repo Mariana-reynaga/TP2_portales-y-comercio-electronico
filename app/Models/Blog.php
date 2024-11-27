@@ -10,6 +10,8 @@ class Blog extends Model
 
     protected $primaryKey = 'blog_id';
 
+    protected $fillable = ['blog_title', 'blog_author', 'blog_article'];
+
     public function casts(){
         return [
             'created_at' => 'date'

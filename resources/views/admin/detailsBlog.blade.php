@@ -1,9 +1,9 @@
-@extends('layouts.main')
+@extends('layouts.admin')
 
 @section('title', $article->blog_title)
 
 @section('content')
-    <x-back-btn route="blog.page" />
+    <x-back-btn route="admin.blogs" />
 
     <div class="flex justify-center">
         <div class="w-4/5">

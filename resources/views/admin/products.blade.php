@@ -5,7 +5,7 @@
 @section('content')
     <div class="flex justify-center mb-10">
         <div class="w-4/5">
-            <h1><a href="/admin/lamparas/crear" class="px-8 py-4 mb-10 lg:px-6 lg:py-2 text-xl lg:text-base bg-primary rounded-md">Crear Producto</a></h1>
+            <h1><a href="{{ route('products.create') }}" class="px-8 py-4 mb-10 lg:px-6 lg:py-2 text-xl lg:text-base bg-primary rounded-md">Crear Producto</a></h1>
         </div>
     </div>
 
