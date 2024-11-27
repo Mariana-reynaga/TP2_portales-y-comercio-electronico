@@ -5,13 +5,13 @@
 @section('content')
     <form action="">
         <x-label-and-input>
-            <x-slot name="dbCol">user_email</x-slot>
+            <x-slot name="dbCol">email</x-slot>
             <x-slot name="label">Email</x-slot>
             <x-slot name="type">email</x-slot>
         </x-label-and-input>
 
         <x-label-and-input>
-            <x-slot name="dbCol">user_password</x-slot>
+            <x-slot name="dbCol">password</x-slot>
             <x-slot name="label">Contraseña</x-slot>
             <x-slot name="type">password</x-slot>
         </x-label-and-input>

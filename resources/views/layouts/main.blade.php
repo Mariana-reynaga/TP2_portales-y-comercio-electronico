@@ -17,6 +17,11 @@
         <x-slot name="route_blog">/blog</x-slot>
     </x-navbar>
 
+    @if (session()->has('feedback'))
+        <div class="bg-green-500">
+            {!! session()->get('feedback') !!}
+        </div>
+    @endif
 
     @yield('content')
 

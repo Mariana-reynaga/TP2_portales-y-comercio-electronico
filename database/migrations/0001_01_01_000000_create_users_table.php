@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id('user_id');
-            $table->string('user_name');
-            $table->string('user_email')->unique();
+            $table->id();
+            $table->string('user');
+            $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('user_password');
+            $table->string('password');
             $table->enum('user_role', ['user', 'admin']);
             $table->rememberToken();
             $table->timestamps();
@@ -37,13 +37,27 @@ return new class extends Migration
             $table->integer('last_activity')->index();
         });
 
-        DB::table('users')->insert([
-            'user_name' => 'Mariana',
-            'user_email' => 'test@gmail.com',
-            'user_password' => \Hash::make('password'),
-            'user_role' => 'admin',
-            'created_at' => now()
-        ]);
+        DB::table('users')->insert(
+            [
+                'user' => 'Mariana',
+                'email' => 'test@gmail.com',
+                'password' => \Hash::make('password'),
+                'user_role' => 'admin',
+                'created_at' => now()
+            ],
+
+        );
+
+        DB::table('users')->insert(
+            [
+                'user' => 'Cliente',
+                'email' => 'cliente@gmail.com',
+                'password' => \Hash::make('cliente'),
+                'user_role' => 'user',
+                'created_at' => now()
+            ],
+
+        );
     }
 
     /**

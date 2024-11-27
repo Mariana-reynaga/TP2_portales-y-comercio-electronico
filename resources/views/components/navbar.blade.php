@@ -6,10 +6,22 @@
             <ul class="w-1/3 flex justify-between items-center text-xl font-outfit text-black">
                 <li><a href="{{ $route_lamps }}">Productos</a></li>
                 <li><a href="{{ $route_blog }}">Blog</a></li>
+
+
+
                 @guest
                     <li><a href="/iniciar">Iniciar sesión</a></li>
                 @else
-                    <li><a href="/">Cerrar sesión</a></li>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+
+                        <div class="flex">
+                            <p class="me-4">{{ auth()->user()->user }}</p>
+                            <button type="submit">Cerrar sesión</button>
+                        </div>
+                    </form>
+
+
                 @endguest
             </ul>
         </div>
