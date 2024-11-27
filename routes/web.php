@@ -36,6 +36,10 @@ Route::get('/admin', [App\Http\Controllers\AdminController::class, 'admin'])
 Route::get('/admin/lamparas', [App\Http\Controllers\ProductController::class, 'adminProducts'])
     ->name('admin.products');
 
+Route::get('/admin/lamparas/detalle/{id}', [App\Http\Controllers\ProductController::class, "adminDetail"])
+    ->name('admin.products.detail')
+    ->whereNumber('id');
+
 Route::get('/admin/lamparas/crear', [App\Http\Controllers\ProductController::class, "productCreate"])
     ->name('products.create');
 

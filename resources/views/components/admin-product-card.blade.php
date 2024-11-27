@@ -16,6 +16,8 @@
 
             <a href="{{ route('products.edit', ['id'=>$id]) }}" class="px-8 py-4 lg:px-6 lg:py-2 text-xl lg:text-base border-2 border-secondary rounded-md">Editar</a>
 
+            <a href="{{ route('admin.products.detail', ['id'=>$id]) }}" class="px-8 py-4 lg:px-6 lg:py-2 text-xl lg:text-base bg-secondary rounded-md">Ver</a>
+
         </div>
     </div>
 </div>

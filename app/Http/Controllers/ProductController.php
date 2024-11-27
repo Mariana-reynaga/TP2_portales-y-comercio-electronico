@@ -44,6 +44,14 @@ class ProductController extends Controller
         ]);
     }
 
+    public function adminDetail(int $id){
+        $product = Lamparas::find($id);
+
+        return view('admin.detailsProduct', [
+            'product' => $product
+        ]);
+    }
+
     public function productCreate(){
         $colors = Color::all();
         $materials = Material::all();
