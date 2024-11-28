@@ -32,14 +32,11 @@ Route::post('/iniciar', [App\Http\Controllers\AuthController::class, "loginProce
 Route::get('/crear', [App\Http\Controllers\AuthController::class, "registerView"])
     ->name('register.form');
 
+Route::post('/crear', [App\Http\Controllers\AuthController::class, "registerProcess"])
+    ->name('register.process');
+
 Route::post('/cerrar', [App\Http\Controllers\AuthController::class, "logOut"])
     ->name('logout');
-
-    // User
-Route::get('/user/{id}', [App\Http\Controllers\AuthController::class, 'userProfile'])
-    ->name('user.profile')
-    ->whereNumber('id')
-    ->middleware('auth');
 
     // Admin
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'admin'])
