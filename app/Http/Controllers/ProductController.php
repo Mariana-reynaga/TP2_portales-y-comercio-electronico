@@ -109,7 +109,7 @@ class ProductController extends Controller
 
         Lamparas::create($input);
 
-        return redirect()->route('admin.products');
+        return redirect()->route('admin.products')->with('feedback.admin', 'Producto Creado Exitosamente.');
     }
 
     public function productEdit(int $id){
@@ -175,7 +175,7 @@ class ProductController extends Controller
 
         $product->update($input);
 
-        return redirect()->route('admin.products');
+        return redirect()->route('admin.products')->with('feedback.admin', 'Producto editado Exitosamente.');
     }
 
     public function deleteProcess(Int $id, Request $req){
@@ -187,6 +187,6 @@ class ProductController extends Controller
 
         $product->delete();
 
-        return redirect()->route('admin.products');
+        return redirect()->route('admin.products')->with('feedback.admin', 'Producto eliminado Exitosamente.');
     }
 }

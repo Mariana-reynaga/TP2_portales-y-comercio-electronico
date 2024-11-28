@@ -67,7 +67,7 @@ class BlogController extends Controller
 
         Blog::create($input);
 
-        return redirect()->route('admin.blogs');
+        return redirect()->route('admin.blogs')->with('feedback.admin', 'Blog Creado Exitosamente.');
     }
 
     public function editBlog(int $id){
@@ -104,7 +104,7 @@ class BlogController extends Controller
 
         $articulo->update($input);
 
-        return redirect()->route('admin.blogs');
+        return redirect()->route('admin.blogs')->with('feedback.admin', 'Blog editado Exitosamente.');
     }
 
     public function deleteBlog(int $id){
@@ -112,6 +112,6 @@ class BlogController extends Controller
 
         $blog->delete();
 
-        return redirect()->route('admin.blogs');
+        return redirect()->route('admin.blogs')->with('feedback.admin', 'Blog eliminado Exitosamente.');
     }
 }

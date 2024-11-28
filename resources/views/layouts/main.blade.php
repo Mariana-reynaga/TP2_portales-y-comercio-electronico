@@ -18,8 +18,12 @@
     </x-navbar>
 
     @if (session()->has('feedback'))
-        <div class="bg-green-500">
-            {!! session()->get('feedback') !!}
+        <div class="flex justify-center">
+            <div class="w-4/5 flex justify-center">
+                <div class="bg-green-500/50 p-6 rounded-md mb-5 font-outfit text-xl w-fit">
+                    {!! session()->get('feedback') !!}
+                </div>
+            </div>
         </div>
     @endif
 

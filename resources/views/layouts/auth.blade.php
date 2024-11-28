@@ -13,12 +13,6 @@
     <main>
         <div class="mt-20 flex justify-center">
 
-            @if (session()->has('feedback.error'))
-                <div class="bg-red-500">
-                    {!! session()->get('feedback.error') !!}
-                </div>
-            @endif
-
             <div class="w-3/5 lg:w-2/5 2xl:w-1/3">
                 <x-back-btn route="landing.page" />
 
