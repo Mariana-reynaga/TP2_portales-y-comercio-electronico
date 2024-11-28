@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
             MarcaSeeder::class,
             MaterialSeeder::class,
             LamparasSeeder::class,
-            BlogSeeder::class
+            BlogSeeder::class,
+            VentasSeeder::class
         ]);
     }
 }

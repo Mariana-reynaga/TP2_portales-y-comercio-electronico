@@ -24,7 +24,7 @@ class Lamparas extends Model
             'brand_fk',
             'color_fk',
             'material_fk'
-        ];
+    ];
 
     public function brand(){
         return $this->belongsTo(Marca::class, 'brand_fk', 'brand_id');
@@ -35,4 +35,6 @@ class Lamparas extends Model
     public function material(){
         return $this->belongsTo(Material::class, 'material_fk', 'material_id');
     }
+
+    
 }

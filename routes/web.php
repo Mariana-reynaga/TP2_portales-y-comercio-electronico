@@ -127,7 +127,13 @@ Route::get('/admin', [App\Http\Controllers\AdminController::class, 'admin'])
         ->middleware('adminCheck');
 
         // Users
-    Route::get('/admin/usuarios', [App\Http\Controllers\BlogController::class, 'adminUsers'])
+    Route::get('/admin/usuarios', [App\Http\Controllers\VentasController::class, 'userSales'])
         ->name('admin.users')
+        ->middleware('auth')
+        ->middleware('adminCheck');
+
+    Route::get('/admin/usuarios/{id}', [App\Http\Controllers\VentasController::class, 'userPurchase'])
+        ->name('admin.users.purchases')
+        ->whereNumber('id')
         ->middleware('auth')
         ->middleware('adminCheck');

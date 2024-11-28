@@ -3,17 +3,15 @@
         <div class="w-4/5 flex justify-between items-center">
             <h1 class="text-3xl font-lilita tracking-wide text-accent"><a href="{{ $route_home }}">{{ $title }}</a></h1>
 
-            <ul class="w-2/5 flex justify-between items-center text-xl font-outfit text-black">
+            <ul class="w-1/4 flex justify-between items-center text-xl font-outfit text-black">
                 <li><a href="{{ $route_lamps }}">Productos</a></li>
                 <li><a href="{{ $route_blog }}">Blog</a></li>
-
-
 
                 @guest
                     <li><a href="{{ route('login') }}">Iniciar sesión</a></li>
                 @else
-                    @if (auth()->user()->user_role === 'admin')
-                        <li><a href="{{ route('admin.home') }}">Administración</a></li>
+                    @if (auth()->user()->user_role == 'admin')
+                        <li><a href="{{ route('admin.users') }}">Usuarios</a></li>
                     @endif
 
                     <form action="{{ route('logout') }}" method="POST">
@@ -21,8 +19,6 @@
 
                         <button type="submit">Cerrar sesión</button>
                     </form>
-
-
                 @endguest
             </ul>
         </div>
