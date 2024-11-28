@@ -25,7 +25,7 @@
     <div class="mt-10 flex justify-center bg-primary">
         <div class="w-4/5 p-4 flex flex-col lg:flex-row">
             <div class="lg:w-1/2 lg:me-3 flex justify-center">
-                <img src="img/lamat.png" alt="" class="w-[500px]">
+                <img src="img/lamp-home.webp" alt="" class="w-[500px]">
             </div>
 
             <div class="lg:w-1/2 px-4 mt-5 lg:ms-3 flex flex-col lg:justify-evenly">
@@ -38,21 +38,22 @@
         </div>
     </div>
 
-    <div class="flex justify-center">
-        <div class="w-4/5 p-4 mt-10 text-center bg-secondary/50 rounded-md">
-            <h2 class="text-xl font-lilita tracking-whide">Unite al club</h2>
-            <div class="flex justify-center">
-                <div class="w-2/3">
-                    <p class="font-outfit">Miembros tienen descuentos y ofertas especiales. Además, ¡reciben las últimas noticias sobre nuestra línea de productos! Para obtener estos beneficios y más, ¡crea tu cuenta gratis!</p>
+    @guest
+        <div class="flex justify-center">
+            <div class="w-4/5 p-4 mt-10 text-center bg-secondary/50 rounded-md">
+                <h2 class="text-xl font-lilita tracking-whide">Unite al club</h2>
+                <div class="flex justify-center">
+                    <div class="w-2/3">
+                        <p class="font-outfit">Miembros tienen descuentos y ofertas especiales. Además, ¡reciben las últimas noticias sobre nuestra línea de productos! Para obtener estos beneficios y más, ¡crea tu cuenta gratis!</p>
+                    </div>
+                </div>
+
+                <div class="mt-10 mb-4 lg:mt-6">
+                    <a href="/crear" class="px-8 py-4 lg:px-6 lg:py-2 text-xl lg:text-base bg-primary rounded-md">Crear cuenta</a>
                 </div>
             </div>
-
-            <div class="mt-10 mb-4 lg:mt-6">
-                <a href="/crear" class="px-8 py-4 lg:px-6 lg:py-2 text-xl lg:text-base bg-primary rounded-md">Crear cuenta</a>
-            </div>
         </div>
-    </div>
-
+    @endguest
 
     <div class="flex justify-center mt-10">
         <div class="w-4/5">

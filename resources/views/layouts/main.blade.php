@@ -11,7 +11,7 @@
 </head>
 <body>
     <x-navbar>
-        <x-slot name="title">Lamparas</x-slot>
+        <x-slot name="title">Wierdo Lamps</x-slot>
         <x-slot name="route_home">/</x-slot>
         <x-slot name="route_lamps">/lamparas</x-slot>
         <x-slot name="route_blog">/blog</x-slot>
