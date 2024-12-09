@@ -18,6 +18,8 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('user_role', ['user', 'admin']);
+            $table->string('user_adress')->nullable();
+            $table->string('user_phone')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
@@ -50,11 +52,13 @@ return new class extends Migration
 
         DB::table('users')->insert(
             [
-                'user' => 'Cliente',
-                'email' => 'cliente@gmail.com',
-                'password' => \Hash::make('cliente'),
-                'user_role' => 'user',
-                'created_at' => now()
+                'user'          => 'Cliente',
+                'email'         => 'cliente@gmail.com',
+                'password'      => \Hash::make('cliente'),
+                'user_role'     => 'user',
+                'user_adress'   => 'Doctor Pedro Ignacio Rivera 2655 6B',
+                'user_phone'    => '56984587',
+                'created_at'    => now()
             ],
 
         );

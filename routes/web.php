@@ -123,14 +123,26 @@ Route::get('/admin', [App\Http\Controllers\AdminController::class, 'admin'])
         ->middleware('auth')
         ->middleware('adminCheck');
 
-        // Users
-    Route::get('/admin/usuarios', [App\Http\Controllers\VentasController::class, 'userSales'])
-        ->name('admin.users')
-        ->middleware('auth')
-        ->middleware('adminCheck');
+    // Users
+Route::get('/perfil/{id}', [App\Http\Controllers\AuthController::class, "profile"])
+    ->name('perfil')
+    ->whereNumber('id');
 
-    Route::get('/admin/usuarios/{id}', [App\Http\Controllers\VentasController::class, 'userPurchase'])
-        ->name('admin.users.purchases')
-        ->whereNumber('id')
-        ->middleware('auth')
-        ->middleware('adminCheck');
+Route::get('/perfil/editar/{id}', [App\Http\Controllers\AuthController::class, "editProfile"])
+    ->name('perfil.edit')
+    ->whereNumber('id');
+
+Route::post('/perfil/editar/{id}', [App\Http\Controllers\AuthController::class, "editProfileProcess"])
+    ->name('perfil.edit.process')
+    ->whereNumber('id');
+
+Route::get('/admin/usuarios', [App\Http\Controllers\VentasController::class, 'userSales'])
+    ->name('admin.users')
+    ->middleware('auth')
+    ->middleware('adminCheck');
+
+Route::get('/admin/usuarios/{id}', [App\Http\Controllers\VentasController::class, 'userPurchase'])
+    ->name('admin.users.purchases')
+    ->whereNumber('id')
+    ->middleware('auth')
+    ->middleware('adminCheck');

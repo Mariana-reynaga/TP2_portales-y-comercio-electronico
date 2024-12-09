@@ -12,9 +12,6 @@
 <body>
     <x-navbar>
         <x-slot name="title">Wierdo Lamps</x-slot>
-        <x-slot name="route_home">/</x-slot>
-        <x-slot name="route_lamps">/lamparas</x-slot>
-        <x-slot name="route_blog">/blog</x-slot>
     </x-navbar>
 
     @if (session()->has('feedback'))
@@ -35,10 +32,12 @@
                 <h3 class="text-xl font-lilita tracking-wide">Lamparas</h3>
 
                 <ul class="font-outfit mt-4 leading-relaxed">
-                    <li>Productos</li>
-                    <li>Blog</li>
-                    <li>Iniciar sesión</li>
-                    <li>Crear cuenta</li>
+                    <li><a href="{{ route('products.page') }}">Productos</a></li>
+                    <li><a href="{{ route('blog.page') }}">Blog</a></li>
+                    @guest
+                        <li><a href="{{ route('login') }}">Iniciar sesión</a></li>
+                        <li><a href="{{ route('register.form') }}">Crear cuenta</a></li>
+                    @endguest
                 </ul>
             </div>
 

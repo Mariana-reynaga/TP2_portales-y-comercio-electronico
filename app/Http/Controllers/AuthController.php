@@ -8,6 +8,8 @@ use App\Models\User;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+// use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class AuthController extends Controller
 {
@@ -34,8 +36,6 @@ class AuthController extends Controller
                    ->back(fallback: route('login'))
                    ->withInput();
         }else{
-            // $req->session()->regenerate();
-
             return redirect()->route('landing.page')->with('feedback', 'Bienvenido '.auth()->user()->user);
         }
     }
@@ -91,4 +91,50 @@ class AuthController extends Controller
                ->with('feedback', 'Sesión cerrada exitosamente.');
     }
 
+    public function profile(Int $id){
+        $user = User::find($id);
+
+        return view('profile.user_profile', [
+            'user_data' => $user
+        ]);
+    }
+
+    public function editProfile(Int $id){
+        $user = User::find($id);
+
+        return view('profile.edit_profile', [
+            'user_data' => $user
+        ]);
+    }
+
+    public function editProfileProcess(Int $id, Request $req){
+        $user = User::findOrFail($id);
+
+        $req->validate(
+            [
+                'user'          =>  'required | min:4  | max:10',
+                'email'         =>  ['required', 'email', Rule::unique('users', 'email')->ignore($user)],
+                'user_adress'   =>  'max:50',
+                'user_phone'    =>  'min:8    | max:8'
+            ],
+            [
+                'user.required'     => 'El nombre es requerido.',
+                'user.min'          => 'El nombre debe tener un minimo de 4 caracteres.',
+                'user.max'          => 'El nombre debe tener un maximo de 10 caracteres.',
+                // //
+                'email.required'    => 'El email es requerido.',
+                // //
+                'user_adress.max'   => 'La direción debe tener un maximo de 50 caracteres.',
+                ////
+                'user_phone.min'    => 'El telefono debe tener 8 números.',
+                'user_phone.max'    => 'El telefono debe tener 8 números.'
+            ]
+        );
+
+        $input = $req->all([]);
+
+        $user->update($input);
+
+        return redirect()->route('perfil',['id'=>$user->user_id])->with('feedback', 'Perfil editado Exitosamente.');
+    }
 }
