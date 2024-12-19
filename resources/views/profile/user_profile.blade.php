@@ -21,14 +21,30 @@
                 <h2 class="font-outfit text-3xl text-black">Pedidos:</h2>
 
                 <div class="mt-4 flex flex-col items-center md:grid md:grid-cols-2 md:gap-x-5 md:gap-y-5 lg:grid-cols-3">
-                    @for ($x = 0; $x <= 2; $x ++ )
-                        <div class="min-h-64 w-full p-6 flex justify-evenly shadow-lg rounded-lg">
-                            <div class="mt-3 flex flex-col justify-evenly font-outfit">
-                                <h3 class="text-xl">compra</h3>
+                    @foreach ( $user_orders as $order )
+                        <div class="w-full p-6 flex flex-col shadow-lg rounded-lg">
+                            <div class="w-full pb-2 mt-3 flex font-outfit border-b-2 border-slate-300">
+                                <h3 class="text-xl">Compra #{{ $order->order_id }}</h3>
+                            </div>
 
+                            <div class="mt-5 flex flex-col">
+                                <p class="mb-3"><span class="font-bold">Dirección de envio:</span> {{ $order->order_adress }}</p>
+
+                                <p class="mb-3"><span class="font-bold">Total:</span> ${{ $order->price_total }} </p>
+
+                                <p class="mb-3"><span class="font-bold">Status:</span> {{ $order->order_status }} </p>
+                            </div>
+
+                            <div class="flex justify-center">
+                                <a href="{{ route('perfil.order', ['id' => $order->order_id]) }}" class="px-8 py-4 lg:px-6 lg:py-2 text-xl lg:text-base bg-secondary rounded-md">Ver más</a>
                             </div>
                         </div>
-                    @endfor
+
+                    @endforeach
+                </div>
+
+                <div class="mt-5">
+                    {{ $user_orders->links() }}
                 </div>
             </div>
         </div>

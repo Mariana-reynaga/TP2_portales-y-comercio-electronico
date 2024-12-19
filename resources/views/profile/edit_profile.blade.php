@@ -15,6 +15,7 @@
 
             <form action="{{ route('perfil.edit.process', ['id'=>$user_data->user_id]) }}" method="POST">
                 @csrf
+                @method('PUT')
 
                 <div class="lg:flex lg:justify-evenly">
                     <div class="lg:w-1/2 lg:me-2 lg:flex lg:flex-col">

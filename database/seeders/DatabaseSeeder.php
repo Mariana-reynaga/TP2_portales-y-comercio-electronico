@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
             MaterialSeeder::class,
             LamparasSeeder::class,
             BlogSeeder::class,
-            VentasSeeder::class
+            OrdersSeeder::class,
+            OrderItemsSeeder::class
         ]);
     }
 }

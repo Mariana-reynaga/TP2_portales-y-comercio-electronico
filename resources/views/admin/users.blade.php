@@ -16,7 +16,7 @@
 
                     <h2 class="font-outfit text-xl text-black"> {{ $user->user }}</h2>
 
-                    <a href="{{ route('admin.users.purchases', ['id'=>$user->user_id]) }}" class="w-fit px-8 py-4 mt-5 lg:px-6 lg:py-2 text-xl lg:text-base bg-secondary rounded-md">Ver</a>
+                    <a href="{{ route('admin.users.details', ['id'=>$user->user_id]) }}" class="w-fit px-8 py-4 mt-5 lg:px-6 lg:py-2 text-xl lg:text-base bg-secondary rounded-md">Ver</a>
                 </div>
             @endforeach
         </div>

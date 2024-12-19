@@ -29,7 +29,17 @@
                     </div>
 
                     <div class="flex justify-center mt-5 lg:mt-0">
-                        <a href="" class="px-6 py-2 font-bold bg-secondary rounded-md">Comprar</a>
+                        <form action="{{ route('cart.add') }}" method="POST">
+                            @csrf
+                            <input type="number" name="qnty" id="qnty" class="w-12 p-2 me-2 rounded-md border-2" value="1" min="1">
+
+                            <input type="hidden" name="lamp_id" value="{{$product->lamp_id}}">
+                            <input type="hidden" name="lamp_name" value="{{$product->lamp_name}}">
+                            <input type="hidden" name="lamp_price" value="{{$product->lamp_price}}">
+
+
+                            <button type="submit" class="px-6 py-2 font-bold bg-secondary rounded-md">Agregar al carrito</button>
+                        </form>
                     </div>
                 </div>
 

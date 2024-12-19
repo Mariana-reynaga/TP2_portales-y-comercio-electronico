@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\User;
+use App\Models\Orders;
+use App\Models\OrderItems;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-// use Illuminate\Support\Facades\Validator;
+
 use Illuminate\Validation\Rule;
+use Illuminate\View\View;
 
 class AuthController extends Controller
 {
@@ -94,8 +97,27 @@ class AuthController extends Controller
     public function profile(Int $id){
         $user = User::find($id);
 
+        $user_id = $user->user_id;
+
+        $orders = Orders::where('user_id_fk', $user_id)->latest()->paginate(3);
+
         return view('profile.user_profile', [
-            'user_data' => $user
+            'user_data' => $user,
+            'user_orders' => $orders
+        ]);
+    }
+
+    public function orderDetails(int $id){
+        $user = auth()->user();
+
+        $order_details = Orders::find($id);
+
+        $product_details = OrderItems::where('order_id_fk', $id)->get();
+
+        return view('profile.order_detail', [
+            'user_data' => $user,
+            'order' => $order_details,
+            'products' => $product_details
         ]);
     }
 
@@ -107,7 +129,7 @@ class AuthController extends Controller
         ]);
     }
 
-    public function editProfileProcess(Int $id, Request $req){
+    public function editProfileProcess(int $id, Request $req){
         $user = User::findOrFail($id);
 
         $req->validate(
@@ -137,4 +159,5 @@ class AuthController extends Controller
 
         return redirect()->route('perfil',['id'=>$user->user_id])->with('feedback', 'Perfil editado Exitosamente.');
     }
+
 }

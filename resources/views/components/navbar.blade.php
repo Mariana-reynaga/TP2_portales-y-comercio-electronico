@@ -6,6 +6,7 @@
             <ul class="w-2/4 flex justify-between items-center text-xl font-outfit text-black">
                 <li><a href="{{ route('products.page') }}">Productos</a></li>
                 <li><a href="{{ route('blog.page') }}">Blog</a></li>
+                <li><a href="{{ route('cart') }}">Carrito</a></li>
 
                 @guest
                     <li><a href="{{ route('login') }}">Iniciar sesión</a></li>

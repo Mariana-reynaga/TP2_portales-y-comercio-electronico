@@ -11,17 +11,17 @@ export default {
     ],
     theme: {
         extend: {
+            fontFamily: {
+                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                lilita: ['Lilita One'],
+                outfit: ['Outfit']
+            },
             colors:{
                 'black': '#030706',
                 'white': '#f8fcfb',
                 'primary': '#69aba7',
                 'secondary': '#a0a7ca',
                 'accent': '#4e4683'
-            },
-            fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
-                lilita: ['Lilita One'],
-                outfit: ['Outfit']
             },
         },
     },
